@@ -85,10 +85,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="SnakeAction.cs" />
+    <Compile Include="SnakeSettings.cs" />
+    <Compile Include="GameSettings.cs" />
+    <Compile Include="GameStatus.cs" />
+    <Compile Include="Move.cs" />
+    <Compile Include="Snake.cs" />
+    <Compile Include="Controllers\SnakeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DisplayType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -101,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
