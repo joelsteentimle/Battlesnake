@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WcfServer")]
+[assembly: AssemblyTitle("Battlesnake.SelfHosted")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WcfServer")]
+[assembly: AssemblyProduct("Battlesnake.SelfHosted")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f2f0d2f3-c0dc-4109-8ce0-6c98c2cd02fc")]
+[assembly: Guid("da178474-b372-4f11-ac85-47e7e6d1f4b2")]
 
 // Version information for an assembly consists of the following four values:
 //

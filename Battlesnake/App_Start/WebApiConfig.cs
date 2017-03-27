@@ -21,7 +21,7 @@ namespace Battlesnake
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}",
+                routeTemplate: "{controller}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

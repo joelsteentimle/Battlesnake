@@ -1,4 +1,4 @@
-﻿namespace Battlesnake
+namespace BattleSnake.Core
 {
     public enum DisplayType
     {

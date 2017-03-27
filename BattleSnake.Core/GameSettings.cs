@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 
-namespace Battlesnake
+namespace BattleSnake.Core
 {
     public class GameSettings
     {

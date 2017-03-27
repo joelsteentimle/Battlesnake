@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BattleSnake.Core;
 
 namespace Battlesnake.Controllers
 {
@@ -15,6 +16,13 @@ namespace Battlesnake.Controllers
         public SnakeSettings Start(GameSettings game)
         {
             return Snake.Create(game);
+        }
+
+        [Route("")]
+        [HttpGet]
+        public string Ping()
+        {
+            return "Pong!";
         }
 
         [Route("move")]
