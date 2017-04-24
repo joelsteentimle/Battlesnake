@@ -73,7 +73,7 @@ namespace BattleSnake.Core
         {
             var peekType = board.Peek(Head, direction);
 
-            return peekType == BoardCellType.Empty || peekType == BoardCellType.Food;
+            return peekType == BoardCellType.Empty || peekType == BoardCellType.Food || peekType == BoardCellType.Dead;
         }
 
         public static SnakeSettings Create(GameSettings game)
