@@ -26,7 +26,7 @@ namespace BattleSnake.Core
             this.width = width;
             this.height = height;
 
-            grid = new BoardCellType[this.width, this.height];
+            grid = new BoardCellType[this.width + 1, this.height + 1];
 
             SetPointArray(food, BoardCellType.Food);
 
@@ -46,7 +46,7 @@ namespace BattleSnake.Core
 
         public BoardCellType GetCellType(int x, int y)
         {
-            if (x < 0 || x >= width || y < 0 || y >= height)
+            if (x < 1 || x >= width || y < 1 || y >= height)
                 return BoardCellType.Wall;
 
             return grid[x, y];

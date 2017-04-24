@@ -35,7 +35,7 @@ namespace Battlesnake.SelfHosted
     {
         static void Main()
         {
-            using (WebApp.Start<Startup>(url: "http://+:80/"))
+            using (WebApp.Start<Startup>(url: "http://+:3303/"))
             {   Console.ReadLine();
             }
         }
