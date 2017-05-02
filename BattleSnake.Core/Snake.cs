@@ -30,10 +30,18 @@ namespace BattleSnake.Core
 
         public Coordinate Head => Coordinates[0];
 
+        private static Dictionary<string, int> lastDirection = new Dictionary<string, int>();
+
         public Move Update(GameStatus state)
         {
-            return Move.Down;                                            
-        }        
+            var directions = new[] { Move.Up, Move.Right, Move.Down, Move.Left };
+
+            var oldDir = lastDirection.ContainsKey(Id) ? lastDirection[Id] : 0;
+
+            lastDirection[Id] = ++oldDir % 4;
+
+            return directions[lastDirection[Id]];
+        }
 
         public static SnakeSettings Create(GameSettings game)
         {
