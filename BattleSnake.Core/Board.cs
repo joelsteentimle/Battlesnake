@@ -10,7 +10,7 @@ namespace BattleSnake.Core
     {
         private readonly BoardCellType[,] grid;
 
-        public Dictionary<Move, Coordinate> directionOffset = new Dictionary<Move, Coordinate>
+        public static Dictionary<Move, Coordinate> directionOffset = new Dictionary<Move, Coordinate>
         {
             {Move.Up, new Coordinate {0, -1}},
             {Move.Right, new Coordinate {1, 0}},
@@ -44,20 +44,20 @@ namespace BattleSnake.Core
             }
         }
 
-        public BoardCellType GetCellType(int x, int y)
+        public BoardCellType Peek(Coordinate peekCoordinate, Move direction)
         {
+            var cor = peekCoordinate.MoveInDirection(direction);
+            return GetBoardType(cor);
+        }
+
+        private BoardCellType GetBoardType(Coordinate cor)
+        {
+            int x = cor.X;
+            int y = cor.Y;
             if (x < 0 || x >= width || y < 0 || y >= height)
                 return BoardCellType.Wall;
 
             return grid[x, y];
-        }
-
-        public BoardCellType Peek(Coordinate peekCoordinate, Move direction)
-        {
-            var peekX = peekCoordinate.X + directionOffset[direction].X;
-            var peekY = peekCoordinate.Y + directionOffset[direction].Y;
-
-            return GetCellType(peekX, peekY);
         }
 
         private void SetPointArray(Coordinate[] coordinates, BoardCellType boardCellType)
@@ -71,12 +71,9 @@ namespace BattleSnake.Core
 
         private void SetBoardPositionType(Coordinate coordinate, BoardCellType cellType)
         {
-            var x = coordinate.X;
-            var y = coordinate.Y;
-
-            if (GetCellType(x, y) != BoardCellType.Wall)
+            if (GetBoardType(coordinate) != BoardCellType.Wall)
             {
-                grid[x, y] = cellType;
+                grid[coordinate.X, coordinate.Y] = cellType;
             }
         }
     }

@@ -10,7 +10,7 @@ namespace BattleSnake.Core
             var random = Guid.NewGuid().ToString().Substring(0, 6);
 
             Color = "#" + random;
-            Name = "test" + random;
+            Name = "This is but a tribute";
         }
 
         [JsonProperty("name")]

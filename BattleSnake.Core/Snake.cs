@@ -5,14 +5,10 @@ using Newtonsoft.Json;
 
 namespace BattleSnake.Core
 {
-    public class Coordinate : List<int>
-    {
-        public int X => this[0];
-        public int Y => this[1];
-    }
-
     public class Snake
     {
+        private GameStatus gameState;
+
         [JsonProperty("taunt")]
         public string Taunt { get; set; }
 
@@ -32,46 +28,25 @@ namespace BattleSnake.Core
 
         public Move Update(GameStatus state)
         {
-            if (state.Food.Any())
+            gameState = state;
+
+            return Directions.OrderBy(MoveScore).First();            
+        }
+        
+        private int MoveScore(Move move)
+        {
+            if (IsOk(move))
             {
-                var food = state.Food.OrderBy(Distance).First();                
-
-                if (Head.X < food.X && IsOk(state.Board, Move.Right))
-                    return Move.Right;
-
-                if (Head.X > food.X && IsOk(state.Board, Move.Left))
-                    return Move.Left;
-
-                if (Head.Y < food.Y && IsOk(state.Board, Move.Down))
-                    return Move.Down;
-
-                if (Head.Y > food.Y && IsOk(state.Board, Move.Up))
-                    return Move.Up;
+                var movePosition = Head.MoveInDirection(move);
+                return gameState.Food.Select(movePosition.Distance).Min();
             }
 
-            if (IsOk(state.Board, Move.Right))
-                return Move.Right;
-
-            if (IsOk(state.Board, Move.Left))
-                return Move.Left;
-
-            if (IsOk(state.Board, Move.Down))
-                return Move.Down;
-
-            return Move.Up;
+            return int.MaxValue;
         }
 
-        private int Distance(Coordinate coordinate)
+        private bool IsOk(Move direction)
         {
-            var xDistance = Math.Abs(Head.X - coordinate.X);
-            var yDistance = Math.Abs(Head.Y - coordinate.Y);
-
-            return xDistance + yDistance;
-        }
-
-        private bool IsOk(Board board, Move direction)
-        {
-            var peekType = board.Peek(Head, direction);
+            var peekType = gameState.Board.Peek(Head, direction);
 
             return peekType == BoardCellType.Empty || peekType == BoardCellType.Food || peekType == BoardCellType.Dead;
         }
@@ -80,5 +55,7 @@ namespace BattleSnake.Core
         {
             return new SnakeSettings(game);
         }
+
+        private static IEnumerable<Move> Directions => new[] {Move.Up, Move.Right, Move.Down, Move.Left,};
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Board.cs" />
     <Compile Include="BoardCellType.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="DisplayType.cs" />
     <Compile Include="GameSettings.cs" />
     <Compile Include="GameStatus.cs" />
